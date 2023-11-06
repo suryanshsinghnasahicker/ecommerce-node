@@ -1,8 +1,9 @@
-import userModel from "../models/userModel";
+import userModel from "../models/userModel.js";
+import { hashPassword } from "../helpers/authHelper.js";
 
-export const registerController=async()=>{
+export const registerController=async(req,res)=>{
      try {
-        const {name,emsil,password,phone,alarm}=req.body;
+        const {name,email,password,phone,address}=req.body;
         //validation
         if(!name){
             return res.send({error:"Name is required"})
@@ -16,7 +17,7 @@ export const registerController=async()=>{
          if(!phone){
             return res.send({error:"phone is required"})
         }
-         if(!addess){
+         if(!address){
             return res.send({error:"addess is required"})
         }
         // check user
@@ -31,11 +32,11 @@ export const registerController=async()=>{
         //register user
         const hashedPassword=await hashPassword(password)
         //save
-        const usser=new userModel({
+        const user=await new userModel({
             name,email,phone,address,password:hashedPassword
         }).save()
 
-        res.staus(201).send({
+        res.status(201).send({
             success:true,
             message:'User Registered Successfully',
             user
