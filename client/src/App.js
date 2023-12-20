@@ -1,11 +1,11 @@
-import './App.css';
-import Layout from './components/layout/Layout';
+import {Routes,Route} from 'react-router-dom'
+import Homepage from './pages/Homepage';
 function App() {
   return (
       <>
-        <Layout>
-        <h1>react ecommerce</h1>
-    </Layout>
+      <Routes>
+        <Route path='/' element={Homepage}/>
+      </Routes>
     </>
   );
 }
