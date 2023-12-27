@@ -3,10 +3,13 @@ import Layout from "../../components/layout/Layout";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth";
 import "../../styles/AuthStyles.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  //variale for custom hook
+  const [auth, setAuth] = useAuth();
   // useNavigate is a hook and need a var
   const navigate = useNavigate();
   // this function returns a promise that resolves after n milliseconds
@@ -19,8 +22,14 @@ const Login = () => {
         `${process.env.REACT_APP_API}/api/v1/auth/login`,
         { email, password }
       );
-      if (res.data.success) {
+      if (res && res.data.success) {
         toast.success(res.data.message);
+        setAuth({
+          ...auth,
+          user: res.data.user,
+          token: res.data.token,
+        });
+        localStorage.setItem("auth", JSON.stringify(res.data));
         await wait(3000);
         navigate("/");
       } else {
