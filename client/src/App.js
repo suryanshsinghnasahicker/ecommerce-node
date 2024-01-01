@@ -11,6 +11,7 @@ import Dashboard from "./pages/user/Dashboard";
 // import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./components/routes/PrivateRoute";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
         <Route path="*" element={<Pagenotfound />} />
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </>
   );
