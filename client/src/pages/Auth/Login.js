@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "../../components/layout/Layout";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import "../../styles/AuthStyles.css";
 const Login = () => {
@@ -12,6 +12,7 @@ const Login = () => {
   const [auth, setAuth] = useAuth();
   // useNavigate is a hook and need a var
   const navigate = useNavigate();
+  const location = useLocation();
   // this function returns a promise that resolves after n milliseconds
   const wait = (n) => new Promise((resolve) => setTimeout(resolve, n));
   //   form submit function
@@ -22,6 +23,7 @@ const Login = () => {
         `${process.env.REACT_APP_API}/api/v1/auth/login`,
         { email, password }
       );
+      console.log(res.data);
       if (res && res.data.success) {
         toast.success(res.data.message);
         setAuth({
@@ -31,7 +33,7 @@ const Login = () => {
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
         await wait(3000);
-        navigate("/");
+        navigate(location.state || "/");
       } else {
         toast.error(res.data.message);
       }
