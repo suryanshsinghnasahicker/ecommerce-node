@@ -13,7 +13,10 @@ export default function PrivateRoute() {
     const authCheck = async () => {
       const res = await axios.get(
         `http://localhost:8080/api/v1/auth/user-auth`
-      ); //   , {
+        //this is temp work done for this , gotta fix it properly with env varibale ,  gotta lookup how to use env var in private route
+      );
+      //this is alternative method for headers
+      //   , {
       //     headers: {
       //       Authorization: auth?.token,
       //     },
