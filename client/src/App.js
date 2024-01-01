@@ -10,6 +10,7 @@ import Login from "./pages/Auth/Login";
 import Dashboard from "./pages/user/Dashboard";
 // import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PrivateRoute from "./components/routes/PrivateRoute";
 function App() {
   return (
     <>
@@ -18,7 +19,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<PrivateRoute />}>
+          <Route path="" element={<Dashboard />} />
+        </Route>
         <Route path="*" element={<Pagenotfound />} />
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
