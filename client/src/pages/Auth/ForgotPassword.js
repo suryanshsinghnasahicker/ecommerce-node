@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/AuthStyles.css";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [newpassword, setNewPassword] = useState("");
+  const [newPassword, setnewPassword] = useState("");
   const [question, setQuestion] = useState("");
 
   //variale for custom hook
@@ -20,7 +20,7 @@ const ForgotPassword = () => {
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API}/api/v1/auth/forgot-password`,
-        { email, newpassword, question }
+        { email, newPassword, question }
       );
       console.log(res.data);
       if (res && res.data.success) {
@@ -71,9 +71,9 @@ const ForgotPassword = () => {
           <div className="mb-3">
             <input
               placeholder="enter your password"
-              value={newpassword}
+              value={newPassword}
               onChange={(e) => {
-                setNewPassword(e.target.value);
+                setnewPassword(e.target.value);
               }}
               type="password"
               className="form-control"
