@@ -1,6 +1,6 @@
 import { useState, useContext, createContext, useEffect } from "react";
-const AuthContext = createContext();
 import axios from "axios";
+const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
