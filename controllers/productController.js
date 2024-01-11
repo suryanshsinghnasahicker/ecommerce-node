@@ -133,7 +133,7 @@ export const deleteProductController = async (req, res) => {
 // update product
 export const updateProductController = async (req, res) => {
   try {
-    const { name, slug, description, price, category, quantity, shipping } =
+    const { name, description, price, category, quantity, shipping } =
       req.fields;
     const { photo } = req.files;
     //validation
@@ -148,7 +148,7 @@ export const updateProductController = async (req, res) => {
         return res.status(500).send({ error: "category is required" });
       case !quantity:
         return res.status(500).send({ error: "quantity is required" });
-      case !photo && photo.size > 10000000:
+      case photo && photo.size > 10000000:
         return res
           .status(500)
           .send({ error: "photo is required and it gotta be less than 1 mb" });
@@ -156,7 +156,7 @@ export const updateProductController = async (req, res) => {
     const products = await productModel.findByIdAndUpdate(
       req.params.pid,
       {
-        ...req.field,
+        ...req.fields,
         slug: slugify(name),
       },
       { new: true }

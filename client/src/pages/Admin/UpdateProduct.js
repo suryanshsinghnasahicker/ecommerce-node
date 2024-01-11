@@ -77,6 +77,7 @@ const UpdateProduct = () => {
         `${process.env.REACT_APP_API}/api/v1/product/update-product/${id}`,
         productData
       );
+
       if (data?.success) {
         toast.error(data?.message);
       } else {
