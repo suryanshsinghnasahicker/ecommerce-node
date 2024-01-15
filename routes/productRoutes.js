@@ -39,4 +39,7 @@ router.get("/product-photo/:pid", productPhotoController);
 // delete product
 router.delete("/delete-product/:pid", deleteProductController);
 
+//filter-product
+router.get("/product-filters", productFiltersController);
+
 export default router;

@@ -13,7 +13,7 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  //get all cat
+  //get all cat funcitons
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
