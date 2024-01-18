@@ -22,12 +22,14 @@ import Orders from "./pages/user/Orders";
 import Profile from "./pages/user/Profile";
 import Product from "./pages/Admin/Product";
 import UpdateProduct from "./pages/Admin/UpdateProduct";
+import ProductDetails from "./pages/ProductDetail";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/search" element={<Search />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
