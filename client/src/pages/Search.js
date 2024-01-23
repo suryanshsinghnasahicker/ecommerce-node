@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "./../components/layout/Layout";
 import { useSearch } from "../context/search";
 const Search = () => {
-  const [values, setValues] = useSearch();
+  const [values, setValues] = useSearch(); // this fetch the search hook from the context (global vairable)
   return (
     <Layout title={"Search results"}>
       <div className="container">
